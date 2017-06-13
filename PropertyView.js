@@ -5,12 +5,13 @@ import {
   StyleSheet,
   Image,
   View,
+  TouchableHighlight,
   Text
 } from 'react-native';
 
 var styles = StyleSheet.create({
   container: {
-    marginTop: 35
+    marginTop: 20
   },
   heading: {
     backgroundColor: '#F8F8F8',
@@ -46,6 +47,15 @@ class PropertyView extends Component {
     title: 'Property',
   };
 
+  onLocationPressed() {
+    var property = this.props.navigation.state.params.property;
+    this.props.navigation.navigate('MapsPage',
+    {
+      longitude: property.longitude,
+      latitude: property.latitude,
+    });
+  }
+
   render() {
     var property = this.props.navigation.state.params.property;
     var stats = property.bedroom_number + ' bed ' + property.property_type;
@@ -65,6 +75,12 @@ class PropertyView extends Component {
           <Text style={styles.title}>{property.title}</Text>
           <View style={styles.separator}/>
         </View>
+        <TouchableHighlight
+            style={styles.button}
+            onPress={this.onLocationPressed.bind(this)}
+            underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Location</Text>
+        </TouchableHighlight>
         <Text style={styles.description}>{stats}</Text>
         <Text style={styles.description}>{property.summary}</Text>
       </View>
