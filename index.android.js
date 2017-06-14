@@ -15,21 +15,15 @@ var MapsPage = require('./MapsPage');
 var styles = ReactNative.StyleSheet.create({
   text: {
     color: 'black',
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     fontSize: 30,
-    margin: 80
+    margin: 80,
+    textAlign: 'center'
   },
   container: {
     flex: 1
   }
 });
-
-class HelloWorld extends React.Component {
-  render() {
-    return <ReactNative.Text style={styles.text}>Hello World (Again)</ReactNative.Text>;
-  }
-
-}
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -39,7 +33,7 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <ReactNative.View>
-        <ReactNative.Text style={styles.text}>Hello, Navigation!</ReactNative.Text>
+        <ReactNative.Text style={styles.text}>Property Finder App</ReactNative.Text>
         <ReactNative.Button onPress={() => navigate('SearchPage')} title="Search Page"/>
       </ReactNative.View>
     );

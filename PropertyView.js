@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   View,
+  ScrollView,
   TouchableHighlight,
   Text
 } from 'react-native';
@@ -39,6 +40,23 @@ var styles = StyleSheet.create({
     fontSize: 18,
     margin: 5,
     color: '#656565'
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
   }
 });
 
@@ -67,7 +85,7 @@ class PropertyView extends Component {
     var price = property.price_formatted.split(' ')[0];
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Image style={styles.image}
             source={{uri: property.img_url}} />
         <View style={styles.heading}>
@@ -83,7 +101,7 @@ class PropertyView extends Component {
         </TouchableHighlight>
         <Text style={styles.description}>{stats}</Text>
         <Text style={styles.description}>{property.summary}</Text>
-      </View>
+      </ScrollView>
     );
   }
 }
